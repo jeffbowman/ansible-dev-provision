@@ -30,7 +30,7 @@ cd ../
 rm -fr pacaur
 
 # running from inside vagrant, so full path from that perspective
-ansible-playbook /vagrant/provision-files/provision.yaml
+ansible-playbook /vagrant/provision-files/provision.yml
 
 /usr/bin/pacman -Scc --noconfirm
 /usr/bin/pacman-optimize
