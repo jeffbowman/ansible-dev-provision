@@ -15,11 +15,9 @@ Steps to use:
   - `vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]`
   - `vb.customize ["modifyvm", :id, "--vram", "128"]`
 * setup the provisioning script
-
-  `config.vm.provision "shell", path: "provision-files/provision.sh"`
-  `config.vm.provision "shell", inline: "ansible-playbook /vagrant/provision-files/provision.yml --extra-vars 'installElasticsearch=yes installKibana=yes'"`
-
-  (`--extra-vars` is used to pass in values for optional packages/services, this is an example.)
+  - `config.vm.provision "shell", path: "provision-files/provision.sh"`
+  - `config.vm.provision "shell", inline: "ansible-playbook /vagrant/provision-files/provision.yml --extra-vars 'installElasticsearch=yes installKibana=yes'"`
+  - (`--extra-vars` is used to pass in values for optional packages/services, this is an example.)
 * cleanup pacman
   - `config.vm.provision "shell", inline: "/usr/bin/pacman -Scc --noconfirm"`
   - `config.vm.provision "shell", inline: "/usr/bin/pacman-optimize"`
