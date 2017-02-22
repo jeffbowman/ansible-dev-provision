@@ -16,7 +16,7 @@ Steps to use:
   - `vb.customize ["modifyvm", :id, "--vram", "128"]`
 * setup the provisioning script
   `config.vm.provision "shell", path: "provision-files/provision.sh"`
-* git clone git@github.com/jeffbowman/ansible-dev-provision.git provision-files
+* `git clone git@github.com/jeffbowman/ansible-dev-provision.git provision-files`
 * copy files from Mega.nz into the provision-files directory
   - AnypointStudio.tar.gz
   - AnypointStudio.desktop
