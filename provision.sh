@@ -30,9 +30,12 @@ cd ../
 rm -fr pacaur
 
 # running from inside vagrant, so full path from that perspective
-ansible-playbook /vagrant/provision-files/provision.yml
+# moved to Vagrantfile
+# ansible-playbook /vagrant/provision-files/provision.yml --extra-vars "elasticsearch=yes kibana=yes"
 
-/usr/bin/pacman -Scc --noconfirm
-/usr/bin/pacman-optimize
-
-echo 'restart needed'
+# need to do this later, as a last step, this file is just a
+# preliminary file and not the complete provisioning script
+# /usr/bin/pacman -Scc --noconfirm
+# /usr/bin/pacman-optimize
+# 
+# echo 'restart needed'

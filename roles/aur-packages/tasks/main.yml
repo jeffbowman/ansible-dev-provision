@@ -36,14 +36,16 @@
   become: yes
   become_user: vagrant
 
-# optional, needs flag
+# set the default java to what was installed above
+- name: "set default java"
+  shell: archlinux-java set java-8-jdk
+
+# optional services
 - name: "install kibana"
   pacaur:
     name: kibana
     state: present
   become: yes
   become_user: vagrant
+  when: installKibana|bool == True 
 
-# set the default java to what was installed above
-- name: "set default java"
-  shell: archlinux-java set java-8-jdk

@@ -1,8 +1,17 @@
 ---
 - hosts: localhost
-  vars:
-    elasticsearch: yes
-    kibana: yes
+  # these have to be passed on the command line
+  # --extra-vars "elasticsearch=yes kibana=yes"
+  # defaults are no, so not passing them will mean they don't get installed
+  vars_prompt:
+    - name: "installElasticsearch"
+      prompt: "install elasticsearch [yes|no]"
+      default: "no"
+      private: no
+    - name: "installKibana"
+      prompt: "install kibana for elasticsearch [yes|no]"
+      default: "no"
+      private: no
     
   roles:
     - { role: pacman-common     }
