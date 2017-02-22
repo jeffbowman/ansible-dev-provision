@@ -1,0 +1,57 @@
+---
+- name: "add autologin group"
+  group:
+    name: autologin
+    system: yes
+    state: present
+- name: "add autologin group to vagrant"
+  user:
+    name: vagrant
+    append: yes
+    groups: autologin
+
+- name: "configure lightdm to enable autologin for vagrant user"
+  replace:
+    dest: /etc/lightdm/lightdm.conf
+    regexp: '^#autologin-user='
+    replace: 'autologin-user=vagrant'
+- name: "configure lightdm autologin timeout"
+  replace:
+    dest: /etc/lightdm/lightdm.conf
+    regexp: '^#autologin-user-timeout=0'
+    replace: 'autologin-user-timeout=0'
+- name: "enable lightdm"
+  systemd:
+    name: lightdm
+    enabled: yes
+- name: "enable network manager"
+  systemd:
+    name: NetworkManager.service
+    enabled: yes
+
+# optional, needs a flag
+- name: "enable elasticsearch"
+  systemd:
+    name: elasticsearch.service
+    enabled: yes
+
+# optional needs a flag
+- name: "enable kibana for elasticsearch"
+  systemd:
+    name: kibana.service
+    enabled: yes
+- name: "fix ownership/permissions of kibana data files"
+  file:
+    recurse: yes
+    path: /usr/share/kibana/data
+    owner: root
+    group: elasticsearch
+    mode: g+Xw
+- name: "fix ownership/permissions of kibana optimize files"
+  file:
+    recurse: yes
+    path: /usr/share/kibana/optimize
+    owner: root
+    group: elasticsearch
+    mode: g+Xw
+

@@ -1,0 +1,13 @@
+---
+- name: "remove virtualbox-guest-utils-nox"
+  pacman:
+    name: virtualbox-guest-utils-nox
+    state: absent
+- name: "install virtualbox-guest-utils"
+  pacman:
+    name: virtualbox-guest-utils
+    state: latest
+- name: "install virtualbox-guest-iso"
+  pacman:
+    name: virtualbox-guest-iso
+    state: latest

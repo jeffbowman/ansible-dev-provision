@@ -1,0 +1,29 @@
+---
+- name: "install emacs"
+  pacman:
+    name: emacs
+    state: latest
+- name: "install intellij-idea-community-edition"
+  pacman:
+    name: intellij-idea-community-edition
+    state: latest
+- name: "install maven"
+  pacman:
+    name: maven
+    state: latest
+- name: "install gvim"
+  pacman:
+    name: gvim
+    state: latest
+- name: "install perl"
+  pacman:
+    name: perl
+    state: latest
+- name: "install ack"
+  pacman:
+    name: ack
+    state: latest
+- name: "install meld"
+  pacman:
+    name: meld
+    state: latest

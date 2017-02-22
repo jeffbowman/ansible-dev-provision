@@ -1,0 +1,89 @@
+---
+# configure emacs
+- name: "make .emacs.d directory"
+  file:
+    path: /home/vagrant/.emacs.d
+    owner: vagrant
+    group: vagrant
+    state: directory
+- name: "checkout emacs dot files"
+  git:
+    clone: yes
+    dest: /home/vagrant/dotfiles.emacs
+    repo: https://bitbucket.org/jeffbowman/dotfiles.git
+- name: "copy emacs init.el to .emacs.d/"
+  copy:
+    src: /home/vagrant/dotfiles.emacs/init.el
+    dest: /home/vagrant/.emacs.d/init.el
+    owner: vagrant
+    group: vagrant
+
+# configure necessary directories
+- name: "make tools directory"
+  file:
+    path: /home/vagrant/Tools
+    owner: vagrant
+    group: vagrant
+    state: directory
+- name: "make Pictures directory"
+  file:
+    path: /home/vagrant/Pictures
+    owner: vagrant
+    group: vagrant
+    state: directory
+- name: "make autostart directory"
+  file:
+    path: /home/vagrant/.config/autostart
+    owner: vagrant
+    group: vagrant
+    state: directory
+- name: "make applications directory"
+  file:
+    path: /home/vagrant/.local/share/applications
+    owner: vagrant
+    group: vagrant
+    state: directory
+
+# anypoint studio
+- name: "install anypoint studio"
+  unarchive:
+    src: /vagrant/provision-files/AnypointStudio.tar.gz
+    dest: /home/vagrant/Tools
+    owner: vagrant
+    group: vagrant
+- name: "copy AnypointStudio desktop file"
+  copy:
+    src: /vagrant/provision-files/AnypointStudio.desktop
+    dest: /home/vagrant/.local/share/applications/AnypointStudio.desktop
+    mode: u+rwx
+    owner: vagrant
+    group: vagrant
+
+# desktop background wallpapers
+- name: "unzip some decent wallpapers"
+  unarchive:
+    src: /vagrant/provision-files/wallpapers.zip
+    dest: /home/vagrant/Pictures
+
+# configure correct location of control key
+- name: "copy autostart swap caps file"
+  copy:
+    src: /vagrant/provision-files/SwapCaps.desktop
+    dest: /home/vagrant/.config/autostart/SwapCaps.desktop
+    mode: u+rwx
+    owner: vagrant
+    group: vagrant
+
+# make zsh default login shell
+- name: "set zsh as login shell"
+  user:
+    name: vagrant
+    shell: /bin/zsh
+
+# setup keepass http plugin
+- name: "copy keepass http plugin"
+  copy:
+    src: /vagrant/provision-files/KeePassHttp.plgx
+    dest: /usr/share/keepass/KeePassHttp.plgx
+    owner: root
+    group: root

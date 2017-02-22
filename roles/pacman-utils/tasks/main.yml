@@ -1,0 +1,14 @@
+---
+- name: "install keepass"
+  pacman:
+    name: keepass
+    state: latest
+- name: "install zip"
+  pacman:
+    name: zip
+    state: latest
+- name: "install unzip"
+  pacman:
+    name: unzip
+    state: latest
+

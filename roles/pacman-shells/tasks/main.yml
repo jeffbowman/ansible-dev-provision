@@ -1,0 +1,9 @@
+---
+- name: "install zsh"
+  pacman:
+    name: zsh
+    state: latest
+- name: "install grml zsh configuration"
+  pacman:
+    name: grml-zsh-config
+    state: latest

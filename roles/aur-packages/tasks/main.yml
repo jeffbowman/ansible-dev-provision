@@ -1,0 +1,49 @@
+---
+- name: "install numix-circle-icon-theme-git"
+  pacaur:
+    name: numix-circle-icon-theme-git
+    state: present
+  become: yes
+  become_user: vagrant
+- name: "install numix-icon-theme-git"
+  pacaur:
+    name: numix-icon-theme-git
+    state: present
+  become: yes
+  become_user: vagrant
+- name: "install numix-themes"
+  pacaur:
+    name: numix-themes
+    state: present
+  become: yes
+  become_user: vagrant
+- name: "install jdk"
+  pacaur:
+    name: jdk
+    state: present
+  become: yes
+  become_user: vagrant
+- name: "install google-chrome"
+  pacaur:
+    name: google-chrome
+    state: present
+  become: yes
+  become_user: vagrant
+- name: "install dropbox"
+  pacaur:
+    name: dropbox
+    state: present
+  become: yes
+  become_user: vagrant
+
+# optional, needs flag
+- name: "install kibana"
+  pacaur:
+    name: kibana
+    state: present
+  become: yes
+  become_user: vagrant
+
+# set the default java to what was installed above
+- name: "set default java"
+  shell: archlinux-java set java-8-jdk

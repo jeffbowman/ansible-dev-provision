@@ -1,0 +1,13 @@
+---
+- name: "install networkmanager"
+  pacman:
+    name: networkmanager
+    state: latest
+- name: "install network-manager-applet"
+  pacman:
+    name: network-manager-applet
+    state: latest
+- name: "install elasitcsearch"
+  pacman:
+    name: elasticsearch
+    state: latest
