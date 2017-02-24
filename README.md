@@ -50,6 +50,11 @@ do that at your option.
   $HOME, on Windows it may be somewhere else).
   - `config.vm.synced_folder "/$HOME/.m2/repository", "/home/vagrant/.m2/repository", owner: "vagrant", group: "users"`
 * Optionally, mount the "/vagrant" directory as "/home/vagrant/git" in the vm.
+  (N.B. /path/to/Vagrantfile is simply the full path to where you ran the
+  `vagrant init` command from the first step above. It should be a directory
+  *not* a full path to the Vagrantfile itself. This is just to help you understand
+  which path to use... it is the one where the Vagrantfile lives. Hopefully
+  that is clear.)
   - `config.vm.synced_folder "/path/to/Vagrantfile" "/home/vagrant/git"`
 * Use the following configuration in the Vagrantfile:
   - `vb.gui = true`
