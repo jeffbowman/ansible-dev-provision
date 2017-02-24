@@ -1,12 +1,4 @@
 ---
-- name: "install xfce4"
-  pacman:
-    name: xfce4
-    state: latest
-- name: "install xfce4-goodies"
-  pacman:
-    name: xfce4-goodies
-    state: latest
 - name: "install xorg"
   pacman:
     name: xorg
@@ -18,10 +10,6 @@
 - name: "install xorg-fonts"
   pacman:
     name: xorg-fonts
-    state: latest
-- name: "install cantarell-fonts"
-  pacman:
-    name: cantarell-fonts
     state: latest
 - name: "install xorg-fonts-alias"
   pacman:
@@ -38,12 +26,4 @@
 - name: "install xorg-mkfontdir"
   pacman:
     name: xorg-mkfontdir
-    state: latest
-- name: "install lightdm"
-  pacman:
-    name: lightdm
-    state: latest
-- name: "install lightdm-gtk-greeter"
-  pacman:
-    name: lightdm-gtk-greeter
     state: latest

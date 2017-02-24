@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: pacman-common }
+  - { role: pacman-xorg   }

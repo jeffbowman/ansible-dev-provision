@@ -11,14 +11,6 @@ Java 8, IntelliJ Community Edition, Emacs, Vim running
 on [Arch Linux](https://www.archlinux.org) and
 using [XFCE4](https://www.xfce.org) as the window manager.
 
-Additional optional software currently configured to install is:
-
-* Elasticsearch
-* Kibana
-
-But these must be mentioned in the Vagrantfile to enable installing
-them. They are not provided by default.
-
 ## Getting Started
 
 These instructions will get you started. Some caveats:
@@ -99,12 +91,8 @@ do that at your option.
   ansible plugin for `pacaur` 
   [ansible-pacaur](https://git.project-insanity.org/onny/ansible-pacaur.git)
   - `config.vm.provision "shell", path: "provision-files/provision.sh"`
-  - `config.vm.provision "shell", inline: "ansible-playbook /vagrant/provision-files/provision.yml --extra-vars 'installElasticsearch=yes installKibana=yes'"`
-  - `--extra-vars` is used to pass in values for optional
-    packages/services, this is an example. If it is not provided, then
-    the `installElasticsearch` and `installKibana` default to `no` and
-    are not installed. Future optional packages will be handled this
-    way as well.
+  - `config.vm.provision "shell", inline: "ansible-playbook /vagrant/provision-files/provision.yml"`
+  
 * Cleanup pacman package cache and optimize pacman
   - `config.vm.provision "shell", inline: "/usr/bin/pacman -Scc --noconfirm"`
   - `config.vm.provision "shell", inline: "/usr/bin/pacman-optimize"`
@@ -132,15 +120,13 @@ restart of the vagrant machine, you should automatically login.
 
 ### Optional Services
 
-This is the current list of optional services and the flags needed to
-be provided in the `--extra-vars`. All options default to `no`, so
-will not be installed by default.
+This is the current list of optional services. To use them, the playbook reference as an inline shell provisioner (see above for exmaple) to your Vagrantfile.
 
 Service | Install Flag Name
 ------- | -----------------
-Elasticsearch | `installElasticsearch`
-Kibana (web front end and search tool for Elastic search) | `installKibana`
-RabbitMQ (fast AMQP Message broker) | `installRabbitMQ`
+Elasticsearch | /vagrant/provision-files/provision-elasticsearch.yml
+Kibana (web front end and search tool for Elastic search) | /vagrant/provision-files/provision-kibana.yml
+RabbitMQ (fast AMQP Message broker) | /vagrant/provision-files/provision-rabbitmq.yml
 
 ## License
 

@@ -1,0 +1,8 @@
+---
+dependencies:
+  - { role: pacman-xfce4    }
+  - { role: aur-packages    }
+  - { role: pacman-devtools }
+  - { role: pacman-shells   }
+  - { role: pacman-utils    }
+  - { role: pacman-web      }

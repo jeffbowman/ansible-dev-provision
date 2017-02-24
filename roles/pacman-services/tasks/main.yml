@@ -7,3 +7,11 @@
   pacman:
     name: network-manager-applet
     state: latest
+- name: "install lightdm"
+  pacman:
+    name: lightdm
+    state: latest
+- name: "install lightdm-gtk-greeter"
+  pacman:
+    name: lightdm-gtk-greeter
+    state: latest

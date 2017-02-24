@@ -1,0 +1,14 @@
+---
+- name: "install xfce4"
+  pacman:
+    name: xfce4
+    state: latest
+- name: "install xfce4-goodies"
+  pacman:
+    name: xfce4-goodies
+    state: latest
+- name: "install cantarell-fonts"
+  pacman:
+    name: cantarell-fonts
+    state: latest
+
