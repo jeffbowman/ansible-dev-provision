@@ -1,8 +1,4 @@
 ---
-- name: "remove virtualbox-guest-utils-nox"
-  pacman:
-    name: virtualbox-guest-utils-nox
-    state: absent
 - name: "install xfce4"
   pacman:
     name: xfce4
