@@ -120,9 +120,9 @@ restart of the vagrant machine, you should automatically login.
 
 ### Optional Services
 
-This is the current list of optional services. To use them, the playbook reference as an inline shell provisioner (see above for exmaple) to your Vagrantfile.
+This is the current list of optional services. To use them, add the playbook as an inline shell provisioner (see above for exmaple) to your Vagrantfile.
 
-Service | Install Flag Name
+Service | Playbook
 ------- | -----------------
 Elasticsearch | /vagrant/provision-files/provision-elasticsearch.yml
 Kibana (web front end and search tool for Elastic search) | /vagrant/provision-files/provision-kibana.yml
