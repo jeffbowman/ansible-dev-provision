@@ -1,7 +1,0 @@
----
-dependencies:
-  - { role: pacman-xconfig  }
-  - { role: pacman-devtools }
-  - { role: pacman-shells   }
-  - { role: pacman-utils    }
-  - { role: pacman-web      }
