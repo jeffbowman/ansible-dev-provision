@@ -28,6 +28,30 @@ These instructions will get you started. Some caveats:
 * This is still a work in progress. I have tried to move specifics out
   of the scripts and into the Vagrant file
 
+My recommendation is to checkout your project source code into a
+project directory, then begin with the instructions below from that
+point. The reason for this is to keep your source code outside the box
+and on the host in case something goes wrong with the virtual machine
+or you delete it you don't also lose your project code.
+
+So, imagine you checkout your code in the following directory:
+
+`/home/me/Projects/my-cool-project/project-source`
+
+I start the install steps below in:
+
+`/home/me/Projects/my-cool-project`
+
+Then mount `/home/me/Projects/my-cool-project` as `/home/vagrant/git`
+in my Vagrantfile so that I have access to the project source code in
+my `$HOME` directory. Normally, on Linux this is where you should be
+working as you have complete permission (by file ownership as well as
+by mode) rather than in other directories outside of this where you
+(by default) might only have read permission. This is an optional
+step, the `/home/me/Projects/my-cool-project` (in this case) is
+automatically mounted as `/vagrant` within the box.
+
+
 ### Prerequisites
 
 Install required software: 
@@ -48,13 +72,19 @@ do that at your option.
   on the host (N.B. $HOME won't work, you need to replace that with 
   your actual path to your .m2 directory. On Linux machines this is 
   $HOME, on Windows it may be somewhere else).
-  - `config.vm.synced_folder "/$HOME/.m2/repository", "/home/vagrant/.m2/repository", owner: "vagrant", group: "users"`
-* Optionally, mount the "/vagrant" directory as "/home/vagrant/git" in the vm.
-  (N.B. /path/to/Vagrantfile is simply the full path to where you ran the
-  `vagrant init` command from the first step above. It should be a directory
-  *not* a full path to the Vagrantfile itself. This is just to help you understand
-  which path to use... it is the one where the Vagrantfile lives. Hopefully
-  that is clear.)
+  - `config.vm.synced_folder "$HOME/.m2/repository", "/home/vagrant/.m2/repository", owner: "vagrant", group: "users"`
+* Optionally, mount the "/vagrant" directory as "/home/vagrant/git" in
+  the vm. This is just a convenience tip, since you normally login to
+  `/home/vagrant`, doing this means your codebase would be contained
+  within your `$HOME` directory. It is intended that your source code
+  for your project lives outside the box and is mounted within. This
+  is to provide the security that if you corrupt your box or run
+  `vagrant destroy` you still have your source on the host hard
+  drive. (N.B. /path/to/Vagrantfile is simply the full path to where
+  you ran the `vagrant init` command from the first step above. It
+  should be a directory *not* a full path to the Vagrantfile
+  itself. This is just to help you understand which path to use... it
+  is the one where the Vagrantfile lives. Hopefully that is clear.)
   - `config.vm.synced_folder "/path/to/Vagrantfile" "/home/vagrant/git"`
 * Use the following configuration in the Vagrantfile:
   - `vb.gui = true`
