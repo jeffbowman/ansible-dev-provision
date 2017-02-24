@@ -45,7 +45,9 @@ do that at your option.
 * Provide a shared mount for the .m2/repository directory, this will
   help cut down on the amount of disk space used by the box, and
   speeds compile times as you probably already have your depenencies
-  on the host
+  on the host (N.B. $HOME won't work, you need to replace that with 
+  your actual path to your .m2 directory. On Linux machines this is 
+  $HOME, on Windows it may be somewhere else).
   - `config.vm.synced_folder "/$HOME/.m2/repository", "/home/vagrant/.m2/repository", owner: "vagrant", group: "users"`
 * Optionally, mount the "/vagrant" directory as "/home/vagrant/git" in the vm.
   - `config.vm.synced_folder "/path/to/Vagrantfile" "/home/vagrant/git"`
