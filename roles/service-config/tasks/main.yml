@@ -59,3 +59,8 @@
     mode: g+Xw
   when: installKibana|bool == True
 
+- name: "enable RabbitMQ"
+  systemd:
+    name: rabbitmq.service
+    enabled: yes
+  when: installRabbitMQ|bool == True

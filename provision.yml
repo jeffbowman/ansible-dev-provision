@@ -12,7 +12,11 @@
       prompt: "install kibana for elasticsearch [yes|no]"
       default: "no"
       private: no
-    
+    - name: "installRabbitMQ"
+      prompt: "install RabbitMQ"
+      default: "no"
+      private: no
+      
   roles:
     - { role: pacman-common     }
     - { role: pacman-virtualbox }

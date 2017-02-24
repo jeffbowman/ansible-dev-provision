@@ -130,6 +130,18 @@ to restart vagrant. Once restared, you will need to login once with a
 password which will allow setting up XFCE4 the first time. On the next
 restart of the vagrant machine, you should automatically login.
 
+### Optional Services
+
+This is the current list of optional services and the flags needed to
+be provided in the `--extra-vars`. All options default to `no`, so
+will not be installed by default.
+
+Service | Install Flag Name
+------- | -----------------
+Elasticsearch | `installElasticsearch`
+Kibana (web front end and search tool for Elastic search) | `installKibana`
+RabbitMQ (fast AMQP Message broker) | `installRabbitMQ`
+
 ## License
 
 This project is provided as-is with no licensing. Please fork and
