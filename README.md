@@ -103,7 +103,7 @@ restart of the vagrant machine, you should automatically login.
 ## License
 
 This project is provided as-is with no licensing. Please fork and
-customize as you see fit. If you would like to end pull-requests, I'm
+customize as you see fit. If you would like to send pull-requests, I'm
 happy to mindfully accept them.
 
 ## Acknowledgements
