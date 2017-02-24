@@ -7,10 +7,3 @@
   pacman:
     name: network-manager-applet
     state: latest
-
-# optional services
-- name: "install elasiticsearch"
-  pacman:
-    name: elasticsearch
-    state: latest
-  when: installElasticsearch|bool == True

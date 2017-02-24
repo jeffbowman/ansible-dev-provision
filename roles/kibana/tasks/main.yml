@@ -1,0 +1,29 @@
+---
+- name: "install kibana"
+  pacaur:
+    name: kibana
+    state: present
+  become: yes
+  become_user: vagrant
+
+- name: "enable kibana for elasticsearch"
+  systemd:
+    name: kibana.service
+    enabled: yes
+
+- name: "fix ownership/permissions of kibana data files"
+  file:
+    recurse: yes
+    path: /usr/share/kibana/data
+    owner: root
+    group: elasticsearch
+    mode: g+Xw
+
+- name: "fix ownership/permissions of kibana optimize files"
+  file:
+    recurse: yes
+    path: /usr/share/kibana/optimize
+    owner: root
+    group: elasticsearch
+    mode: g+Xw
+

@@ -1,23 +1,4 @@
 ---
-# configure emacs
-- name: "make .emacs.d directory"
-  file:
-    path: /home/vagrant/.emacs.d
-    owner: vagrant
-    group: vagrant
-    state: directory
-- name: "checkout emacs dot files"
-  git:
-    clone: yes
-    dest: /home/vagrant/dotfiles.emacs
-    repo: https://bitbucket.org/jeffbowman/dotfiles.git
-- name: "copy emacs init.el to .emacs.d/"
-  copy:
-    src: /home/vagrant/dotfiles.emacs/init.el
-    dest: /home/vagrant/.emacs.d/init.el
-    owner: vagrant
-    group: vagrant
-
 # configure necessary directories
 - name: "make tools directory"
   file:

@@ -28,39 +28,3 @@
   systemd:
     name: NetworkManager.service
     enabled: yes
-
-# optional service configuration
-- name: "enable elasticsearch"
-  systemd:
-    name: elasticsearch.service
-    enabled: yes
-  when: installElasticsearch|bool == True
-
-- name: "enable kibana for elasticsearch"
-  systemd:
-    name: kibana.service
-    enabled: yes
-  when: installKibana|bool == True
-
-- name: "fix ownership/permissions of kibana data files"
-  file:
-    recurse: yes
-    path: /usr/share/kibana/data
-    owner: root
-    group: elasticsearch
-    mode: g+Xw
-  when: installKibana|bool == True
-- name: "fix ownership/permissions of kibana optimize files"
-  file:
-    recurse: yes
-    path: /usr/share/kibana/optimize
-    owner: root
-    group: elasticsearch
-    mode: g+Xw
-  when: installKibana|bool == True
-
-- name: "enable RabbitMQ"
-  systemd:
-    name: rabbitmq.service
-    enabled: yes
-  when: installRabbitMQ|bool == True

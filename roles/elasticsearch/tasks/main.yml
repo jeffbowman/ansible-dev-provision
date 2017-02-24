@@ -1,0 +1,11 @@
+---
+- name: "install elasiticsearch"
+  pacman:
+    name: elasticsearch
+    state: latest
+
+- name: "enable elasticsearch"
+  systemd:
+    name: elasticsearch.service
+    enabled: yes
+
