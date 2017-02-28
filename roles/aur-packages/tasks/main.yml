@@ -11,12 +11,6 @@
     state: present
   become: yes
   become_user: vagrant
-- name: "install numix-themes"
-  pacaur:
-    name: numix-themes
-    state: present
-  become: yes
-  become_user: vagrant
 - name: "install arch numix themes"
   pacaur:
     name: numix-themes-archblue-git
