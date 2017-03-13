@@ -47,7 +47,7 @@
     owner: vagrant
     group: vagrant
     state: directory
-  when: ((hasAS|succeeded) or (hasASDesktop|succeeded))
+  when: hasAS|succeeded
 - name: "make Pictures directory"
   file:
     path: /home/vagrant/Pictures
