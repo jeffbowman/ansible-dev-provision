@@ -35,6 +35,12 @@
   ignore_errors: True
 
 # configure necessary directories
+- name: "fix permissions on .m2 folder"
+  file:
+    path: /home/vagrant/.m2
+    owner: vagrant
+    group: vagrant
+    state: directory
 - name: "make tools directory"
   file:
     path: /home/vagrant/Tools
