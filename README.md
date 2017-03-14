@@ -88,17 +88,32 @@ do that at your option.
 * Setup the provisioning scripts, vagrant allows multiple of them,
   they run in order. The first one installs prerequisites
   including [pacaur](https://aur.archlinux.org/packages/pacaur) and an
-  ansible plugin for `pacaur` 
-  [ansible-pacaur](https://git.project-insanity.org/onny/ansible-pacaur.git)
+  ansible plugin for
+  `pacaur`
+  [ansible-pacaur](https://git.project-insanity.org/onny/ansible-pacaur.git) 
+  
+  N.B., the provision-user.yml file is needed because there are checks
+  to see if certian files exist before attempting to install them. For
+  some reason, `ansible` crashes the first time a variable is used in
+  this manner, but works perfectly well when run a second time. Thus I
+  moved the user configuration to a second file to cause `ansible` to
+  reload which seems to get around the issue.
   - `config.vm.provision "shell", path: "provision-files/provision.sh"`
   - `config.vm.provision "shell", inline: "ansible-playbook /vagrant/provision-files/provision.yml"`
+  - `config.vm.provision "shell", inline: "ansible-playbook /vagrant/provision-files/provision-user.yml"`
   
 * Cleanup pacman package cache and optimize pacman
   - `config.vm.provision "shell", inline: "/usr/bin/pacman -Scc --noconfirm"`
   - `config.vm.provision "shell", inline: "/usr/bin/pacman-optimize"`
 * `git clone git@github.com/jeffbowman/ansible-dev-provision.git provision-files`
 * Additional software installed and must be provided by copying the
-  respective files into this directory:
+  respective files into this directory - there are checks to see if
+  these files exist, so if one is not provided, the provisioning
+  should not error. Note, the filesname *must* be these. For example,
+  if you download a versioned file (AnypointStudio-7.0.0.tar.gz) it
+  will not be found, so make sure to rename any files appropriately as
+  below (so in this example, rename AnypointStudio-7.0.0.tar.gz to
+  just AnypointStudio.tar.gz):
   - AnypointStudio.tar.gz [see Mulesoft's website](https://developer.mulesoft.com/dev/anypoint-studio)
   - AnypointStudio.desktop
   - KeePassHttp.plgx [see KeePass pluins](http://keepass.info/plugins.html#keepasshttp), this can bee used with the `PasslFox` Firefox plugin.
@@ -110,6 +125,11 @@ do that at your option.
     to a different wallpaper every 10 minutes
 * if these files aren't available, update the roles to not use them (see the user-config role)
 * `vagrant up --provision`
+* In the event something goes wrong, sometimes trying the provisioning
+  again will work on the second try, if needed try running `vagrant
+  provision` while the virtual machine is still running. However, it
+  is important to read and understand the error message on the screen
+  as this may not be the correct response in all cases.
 
 ### Final Steps
 
