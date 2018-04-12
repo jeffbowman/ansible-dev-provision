@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  gather_facts: False    
+  vars:
+    bitbucket_password: "none"
+    
+  roles:
+    - { role: user-mule-interview }
