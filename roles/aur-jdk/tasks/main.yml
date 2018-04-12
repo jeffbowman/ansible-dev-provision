@@ -1,0 +1,15 @@
+---
+- name: "install trizen from aur if needed"
+  aur: name=trizen use=internal skip_installed=true
+  become: yes
+  become_user: vagrant
+
+- name: "install jdk8 from aur"
+  aur:
+    use: trizen
+    name: jdk8
+  become: yes
+  become_user: vagrant
+
+- name: "set default java"
+  shell: archlinux-java set java-8-jdk

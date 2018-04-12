@@ -14,24 +14,9 @@
   register: hasASDesktop
   ignore_errors: True
 
-- name: "check for swapcaps configuration"
-  command: test -f /vagrant/provision-files/SwapCaps.desktop
-  register: hasSwapCapsDesktop
-  ignore_errors: True
-
-- name: "check for KeePassHttp plugin"
-  command: test -f /vagrant/provision-files/KeePassHttp.plgx
-  register: hasKeePassPlugin
-  ignore_errors: True
-
 - name: "check for settings.xml"
   command: test -f /vagrant/provision-files/settings.xml
   register: hasSettingsXml
-  ignore_errors: True
-
-- name: "check for wallpapers.zip"
-  command: test -f /vagrant/provision-files/wallpapers.zip
-  register: hasWallpapers
   ignore_errors: True
 
 # configure necessary directories
@@ -47,33 +32,20 @@
     owner: vagrant
     group: vagrant
     state: directory
-  when: hasAS|succeeded
-- name: "make Pictures directory"
-  file:
-    path: /home/vagrant/Pictures
-    owner: vagrant
-    group: vagrant
-    state: directory
-- name: "make autostart directory"
-  file:
-    path: /home/vagrant/.config/autostart
-    owner: vagrant
-    group: vagrant
-    state: directory
+  when: hasAS is succeeded
 - name: "make applications directory"
   file:
     path: /home/vagrant/.local/share/applications
     owner: vagrant
     group: vagrant
     state: directory
-# anypoint studio
 - name: "install anypoint studio"
   unarchive:
     src: /vagrant/provision-files/AnypointStudio.tar.gz
     dest: /home/vagrant/Tools
     owner: vagrant
     group: vagrant
-  when: hasAS|succeeded
+  when: hasAS is succeeded
 - name: "copy AnypointStudio desktop file"
   copy:
     src: /vagrant/provision-files/AnypointStudio.desktop
@@ -81,36 +53,7 @@
     mode: u+rwx
     owner: vagrant
     group: vagrant
-  when: hasASDesktop|succeeded
-# desktop background wallpapers
-- name: "unzip some decent wallpapers"
-  unarchive:
-    src: /vagrant/provision-files/wallpapers.zip
-    dest: /home/vagrant/Pictures
-  when: hasWallpapers|succeeded
-# configure correct location of control key
-- name: "copy autostart swap caps file"
-  copy:
-    src: /vagrant/provision-files/SwapCaps.desktop
-    dest: /home/vagrant/.config/autostart/SwapCaps.desktop
-    mode: u+rwx
-    owner: vagrant
-    group: vagrant
-  when: hasSwapCapsDesktop|succeeded
-# make zsh default login shell
-- name: "set zsh as login shell"
-  user:
-    name: vagrant
-    shell: /bin/zsh
-# setup keepass http plugin
-- name: "copy keepass http plugin"
-  copy:
-    src: /vagrant/provision-files/KeePassHttp.plgx
-    dest: /usr/share/keepass/KeePassHttp.plgx
-    owner: root
-    group: root
-  when: hasKeePassPlugin|succeeded
-# copy settings.xml file for maven usage
+  when: hasASDesktop is succeeded
 - name: "copy settings.xml file"
   copy:
     src: /vagrant/provision-files/settings.xml
@@ -118,4 +61,4 @@
     mode: u+rw
     owner: vagrant
     group: vagrant
-  when: hasSettingsXml|succeeded
+  when: hasSettingsXml is succeeded

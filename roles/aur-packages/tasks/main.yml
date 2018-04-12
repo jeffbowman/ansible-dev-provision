@@ -17,9 +17,9 @@
     state: present
   become: yes
   become_user: vagrant
-- name: "install jdk"
+- name: "install jdk8"
   pacaur:
-    name: jdk
+    name: jdk8
     state: present
   become: yes
   become_user: vagrant

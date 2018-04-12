@@ -1,0 +1,6 @@
+---
+dependencies:
+  - { role: pacman-xfce4    }
+  - { role: aur-jdk         }
+  - { role: pacman-devtools }
+  - { role: interview-git   }

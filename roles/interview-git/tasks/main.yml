@@ -1,0 +1,11 @@
+---
+- name: "make vagrant/Project directory for interview code"
+  file:
+    path: /vagrant/Project
+    owner: vagrant
+    group: vagrant
+    state: directory
+- name: "checkout interview project"
+  git:
+    repo: "https://bowmanjeff:{{ bitbucket_password }}@bitbucket.org/bowmanjeff/interview-challenge.git"
+    dest: /vagrant/Project
