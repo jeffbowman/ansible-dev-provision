@@ -104,7 +104,6 @@ do that at your option.
   
 * Cleanup pacman package cache and optimize pacman
   - `config.vm.provision "shell", inline: "/usr/bin/pacman -Scc --noconfirm"`
-  - `config.vm.provision "shell", inline: "/usr/bin/pacman-optimize"`
 * `git clone git@github.com/jeffbowman/ansible-dev-provision.git provision-files`
 * Additional software installed and must be provided by copying the
   respective files into this directory - there are checks to see if
