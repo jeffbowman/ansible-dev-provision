@@ -7,5 +7,5 @@
     state: directory
 - name: "checkout interview project"
   git:
-    repo: "https://bowmanjeff:{{ bitbucket_password }}@bitbucket.org/bowmanjeff/interview-challenge.git"
+    repo: "https://{{ bitbucket_user }}:{{ bitbucket_password }}@bitbucket.org/bowmanjeff/interview-challenge.git"
     dest: /vagrant/Project
