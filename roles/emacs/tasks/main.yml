@@ -10,7 +10,7 @@
 - name: "symlink dotfiles/emacs to ~/.emacs.d"
   file:
     src: /home/vagrant/dotfiles/emacs
-    path: /home/vagrant/.emacs.d/
+    dest: /home/vagrant/.emacs.d
     owner: vagrant
     group: vagrant
     state: link

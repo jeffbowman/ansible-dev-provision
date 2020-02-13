@@ -23,7 +23,3 @@
   pacman:
     name: xorg-mkfontscale
     state: latest
-- name: "install xorg-mkfontdir"
-  pacman:
-    name: xorg-mkfontdir
-    state: latest

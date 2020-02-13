@@ -47,7 +47,7 @@
     owner: vagrant
     group: vagrant
     state: directory
-  when: hasAS|succeeded
+  when: hasAS is succeeded
 - name: "make Pictures directory"
   file:
     path: /home/vagrant/Pictures
@@ -73,7 +73,7 @@
     dest: /home/vagrant/Tools
     owner: vagrant
     group: vagrant
-  when: hasAS|succeeded
+  when: hasAS is succeeded
 - name: "copy AnypointStudio desktop file"
   copy:
     src: /vagrant/provision-files/AnypointStudio.desktop
@@ -81,13 +81,13 @@
     mode: u+rwx
     owner: vagrant
     group: vagrant
-  when: hasASDesktop|succeeded
+  when: hasASDesktop is succeeded
 # desktop background wallpapers
 - name: "unzip some decent wallpapers"
   unarchive:
     src: /vagrant/provision-files/wallpapers.zip
     dest: /home/vagrant/Pictures
-  when: hasWallpapers|succeeded
+  when: hasWallpapers is succeeded
 # configure correct location of control key
 - name: "copy autostart swap caps file"
   copy:
@@ -96,7 +96,7 @@
     mode: u+rwx
     owner: vagrant
     group: vagrant
-  when: hasSwapCapsDesktop|succeeded
+  when: hasSwapCapsDesktop is succeeded
 # make zsh default login shell
 - name: "set zsh as login shell"
   user:
@@ -109,7 +109,7 @@
     dest: /usr/share/keepass/KeePassHttp.plgx
     owner: root
     group: root
-  when: hasKeePassPlugin|succeeded
+  when: hasKeePassPlugin is succeeded
 # copy settings.xml file for maven usage
 - name: "copy settings.xml file"
   copy:
@@ -118,4 +118,4 @@
     mode: u+rw
     owner: vagrant
     group: vagrant
-  when: hasSettingsXml|succeeded
+  when: hasSettingsXml is succeeded
