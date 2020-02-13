@@ -1,31 +1,18 @@
 ---
-- name: "make .emacs.d directory"
-  file:
-    path: /home/vagrant/.emacs.d
-    owner: vagrant
-    group: vagrant
-    state: directory
-
-# this is specific to me, may need to find a way to parameterize this
-# instead
 - name: "checkout emacs dot files"
   git:
     clone: yes
-    dest: /home/vagrant/dotfiles.emacs
+    dest: /home/vagrant/dotfiles
     repo: https://bitbucket.org/jeffbowman/dotfiles.git
-
-- name: "fix permissions on dotfiles"
-  file:
-    recurse: yes
-    path: /home/vagrant/dotfiles.emacs
-    owner: vagrant
-    group: vagrant
-    mode: 0755
   become: yes
+  become_user: vagrant
 
-- name: "copy emacs init.el to .emacs.d/"
-  copy:
-    src: /home/vagrant/dotfiles.emacs/init.el
-    dest: /home/vagrant/.emacs.d/init.el
+- name: "symlink dotfiles/emacs to ~/.emacs.d"
+  file:
+    src: /home/vagrant/dotfiles/emacs
+    path: /home/vagrant/.emacs.d/
     owner: vagrant
     group: vagrant
+    state: link
+  become: yes
+  become_user: vagrant
