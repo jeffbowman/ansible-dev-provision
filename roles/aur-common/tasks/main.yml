@@ -1,6 +1,6 @@
 ---
-- name: "install trizen from aur if needed"
-  aur: name=trizen use=auto skip_installed=true
+- name: "install yay from aur if needed"
+  aur: name=yay use=auto skip_installed=true
   become: yes
   become_user: vagrant
   ignore_errors: yes

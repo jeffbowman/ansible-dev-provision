@@ -1,7 +1,7 @@
 ---
 - name: "install jdk8 from aur"
   aur:
-    use: trizen
+    use: yay
     name: jdk8
   become: yes
   become_user: vagrant

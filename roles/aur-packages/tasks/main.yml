@@ -1,25 +1,25 @@
 ---
 - name: "install numix-circle-icon-theme-git"
   aur:
-    use: trizen
+    use: yay
     name: numix-circle-icon-theme-git
   become: yes
   become_user: vagrant
 - name: "install numix-icon-theme-git"
   aur:
-    use: trizen
+    use: yay
     name: numix-icon-theme-git
   become: yes
   become_user: vagrant
 - name: "install arch numix themes"
   aur:
-    use: trizen
+    use: yay
     name: numix-themes-archblue-git
   become: yes
   become_user: vagrant
 - name: "install dropbox"
   aur:
-    use: trizen
+    use: yay
     name: dropbox
   become: yes
   become_user: vagrant

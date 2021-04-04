@@ -1,13 +1,13 @@
 ---
 - name: "install google-chrome"
   aur:
-    use: trizen
+    use: yay
     name: google-chrome
   become: yes
   become_user: vagrant
 - name: "install chrome remote desktop"
   aur:
-    use: trizen
+    use: yay
     name: chrome-remote-desktop
   become: yes
   become_user: vagrant

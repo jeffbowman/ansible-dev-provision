@@ -13,13 +13,14 @@ if [ ! -d /vagrant/provision-files/library ]; then
     ln -s /vagrant/provision-files/library/aur.py /vagrant/provision-files/library/aur
 fi
 
-# install pacaur, needed for installing several packages from AUR repo
+# install yay, needed for installing several packages from AUR repo
+pacman -S base-devel --noconfirm
 sudo -u vagrant mkdir -p /home/vagrant/aur
 cd /home/vagrant/aur
-sudo -u vagrant /usr/bin/curl https://aur.archlinux.org/cgit/aur.git/snapshot/trizen.tar.gz -o trizen.tar.gz
-sudo -u vagrant /usr/bin/tar -zxf trizen.tar.gz && cd trizen
+sudo -u vagrant /usr/bin/curl https://aur.archlinux.org/cgit/aur.git/snapshot/yay.tar.gz -o yay.tar.gz
+sudo -u vagrant /usr/bin/tar -zxf yay.tar.gz && cd yay
 sudo -u vagrant /usr/bin/makepkg -sc
-/usr/bin/pacman -U trizen*.xz --noconfirm --needed
+/usr/bin/pacman -U yay*.zst --noconfirm --needed
 #cd ../
 # rm -fr trizen
 # rm trizen.tar.gz
