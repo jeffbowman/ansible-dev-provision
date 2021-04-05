@@ -1,0 +1,12 @@
+[Desktop Entry]
+Comment=Swap Caps Lock and Control Keys
+Encoding=UTF-8
+Exec=/usr/bin/setxkbmap -option '' -option 'ctrl:swapcaps'
+Hidden=false
+Name=Caps Lock <-> Control
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Type=Application
+Version=0.9.4
+
