@@ -11,9 +11,13 @@
   pacman:
     name: xorg-fonts
     state: latest
-- name: "install xorg-fonts-alias"
+- name: "install xorg-fonts-alias-100dpi"
   pacman:
-    name: xorg-fonts-alias
+    name: xorg-fonts-alias-100dpi
+    state: latest
+- name: "install xorg-fonts-alias-75dpi"
+  pacman:
+    name: xorg-fonts-alias-75dpi
     state: latest
 - name: "install xorg-fonts-misc"
   pacman:
