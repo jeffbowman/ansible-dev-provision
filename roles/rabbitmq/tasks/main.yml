@@ -1,8 +1,8 @@
 ---
 - name: "install RabbitMQ"
-  pacaur:
+  aur:
+    use: yay
     name: rabbitmq
-    state: present
   become: yes
   become_user: vagrant
 

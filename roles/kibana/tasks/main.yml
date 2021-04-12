@@ -1,8 +1,8 @@
 ---
 - name: "install kibana"
-  pacaur:
+  aur:
+    use: yay
     name: kibana
-    state: present
   become: yes
   become_user: vagrant
 

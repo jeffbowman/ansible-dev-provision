@@ -87,10 +87,10 @@ do that at your option.
   - `vb.customize ["modifyvm", :id, "--accerate3d", "on"]`
 * Setup the provisioning scripts, vagrant allows multiple of them,
   they run in order. The first one installs prerequisites
-  including [pacaur](https://aur.archlinux.org/packages/pacaur) and an
+  including [yay](https://aur.archlinux.org/packages/yay) and an
   ansible plugin for
-  `pacaur`
-  [ansible-pacaur](https://git.project-insanity.org/onny/ansible-pacaur.git) 
+  `aur`
+  [ansible-aur](https://github.com/kewlfft/ansible-aur.git) 
   
   N.B., the provision-user.yml file is needed because there are checks
   to see if certian files exist before attempting to install them. For
