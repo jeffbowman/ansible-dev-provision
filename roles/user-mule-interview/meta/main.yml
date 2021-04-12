@@ -1,7 +1,7 @@
 ---
 dependencies:
   - { role: pacman-xfce4    }
-  - { role: aur-jdk         }
+  - { role: openjdk         }
   - { role: aur-google      }
   - { role: pacman-devtools }
   - { role: interview-git   }
