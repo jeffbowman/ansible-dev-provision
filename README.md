@@ -57,7 +57,7 @@ do that at your option.
 
 ### Installing
 
-* `vagrant init ogarcia/archlinux-x64`
+* `vagrant init archlinux/archlinux`
 * Provide a shared mount for the .m2/repository directory, this will
   help cut down on the amount of disk space used by the box, and
   speeds compile times as you probably already have your depenencies
