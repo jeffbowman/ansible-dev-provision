@@ -6,7 +6,7 @@ echo 'KEYMAP=us' > /etc/vconsole.conf
 /usr/bin/reflector -c 'United States' -p http --save /etc/pacman.d/mirrorlist
 
 # preinstall dependencies for aur packages coming next
-/usr/bin/pacman -S base-devel ansible git pacutils perl perl-libwww perl-term-ui perl-json perl-data-dump perl-lwp-protocol-https perl-term-readline-gnu perl-json-xs --noconfirm --needed
+/usr/bin/pacman -S base-devel ansible git go pacutils perl perl-libwww perl-term-ui perl-json perl-data-dump perl-lwp-protocol-https perl-term-readline-gnu perl-json-xs --noconfirm --needed
 
 if [ ! -d /vagrant/provision-files/library ]; then
     git clone https://github.com/kewlfft/ansible-aur.git /vagrant/provision-files/library
